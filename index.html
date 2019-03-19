@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue@2.6.9/dist/vue.js"></script>
+</head>
+<body>
+    <div id="vue-app">
+        <div>
+            <h1>{{ greet('Morning') }}</h1>
+            <p>{{ name }}</p>
+            <span>Visit: <a :href="website">my personal blog</a></span>
+            <p v-html="websiteTag"></p>
+        </div>
+        <div class="dynamicCSS">
+            <h4>Dynamic CSS</h4>
+            <p>Example 1</p>
+            <div :class="{available: available}">
+                <span class="dynamicSpan">Oluwatobiloba</span>
+            </div>
+            <p>Example 2</p>
+        </div>
+        <div>
+            <h4>Preventing default behavior: </h4>
+            <a @click="clickyAlert" href="https://chidinmacodes.com">ChidinmaCodes</a>
+        </div>
+        <div>
+            <h4>Computed Properties</h4>
+            <button @click="a++">Add to A</button>
+            <button @click="b++">Add to B</button>
+
+            <p>A - {{ a }}</p>
+            <p>B - {{ b }}</p>
+            <p>Age + A = {{ addToA }}</p>
+            <p>Age + B = {{ addToB }}</p>
+        </div>
+
+        <div class="keyboardEvents">
+            <h4>Keyboard Events</h4>
+
+            <label for="name">Middle Name:</label>
+            <input type="text" @keyup.enter="logName" v-model="middleName">
+            <span>{{ middleName }}</span>
+
+            <label for="number">House Number:</label>
+            <input type="number" @keyup.alt.enter="logNumber" v-model="houseNumber">
+            <span>{{ houseNumber }}</span>
+        </div>
+
+        <br>
+
+        <div class="clickevents">
+            <button @click="add(1)">Add a year</button>
+            <button @click="subtract(1)">Subtract a year</button>
+            <p> My age: {{ age }}</p>
+            <button @dblclick.once="add(10)">Add 10 years</button>
+            <button @dblclick="subtract(10)">Subtract 10 years</button>
+        </div>
+
+        <div id="canvas" @mousemove="updateXY">{{x}}, {{y}}</div>
+
+        <div>
+            <p>What's your name?</p>
+            <input type="text" :placeholder="name"/>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
