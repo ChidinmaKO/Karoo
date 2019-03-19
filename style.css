@@ -1,16 +1,17 @@
 #canvas{
-    width: 500px;
+    width: 200px;
     padding: 200px 20px;
     text-align: center;
     border: 1px solid #333;
 }
 
-span.dynamicSpan{
+span{
     background: red;
     display: inline-block;
     padding: 10px;
     color: #fff;
     margin: 10px 0;
+    cursor: pointer;
 }
 
 .available span{
@@ -20,4 +21,47 @@ span.dynamicSpan{
 .nearby span:after{
     content: "nearby";
     margin-left: 10px;
+    text-decoration: underline;
+}
+
+.error{
+    background: red;
+    padding: 10px;
+    color: white;
+}
+
+.success{
+    background: green;
+    padding: 10px;
+    color: white;
+}
+
+/* Punching bag */
+#bag{
+    width: 200px;
+    height: 500px;
+    margin: 0 auto;
+    background: url(/img/bag.png) center no-repeat;
+    background-size: 80%;
+}
+
+#bag.burst{
+    background-image: url(/img/bag-burst.png);
+    background-size: 80%;
+}
+
+#bag-health{
+    width: 200px;
+    border: 2px solid #000;
+    margin: 0 auto 20px auto;
+}
+
+#bag-health div{
+    height: 20px;
+    background: crimson
+}
+
+#controls{
+    width: 120px;
+    margin: 0 auto;
 }

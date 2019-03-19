@@ -1,4 +1,4 @@
-new Vue({
+var one = new Vue({
     el:'#vue-app',
     data: {
         x: 0,
@@ -12,10 +12,33 @@ new Vue({
         houseNumber: '',
         a: 0,
         b: 0,
-        available: false,
-        nearby: false,
+        available: true,
+        nearby: true,
+        error: false,
+        success: false,
+        characters: ['Chidinma', 'Kalu', 'Tobi', 'Precious', 'Victoria'],
+        ninjas: [
+            { name: 'Chidinma', age: 24 },
+            { name: 'Tobi', age: 26 },
+            { name: 'Victoria', age: 27 }
+        ],
+        health: 100,
+        ended: false,
     },
     methods: {
+        punch: function() {
+            this.health -= 10;
+            if(this.health <= 0) {
+                this.ended = true;
+            }
+        },
+        restart: function() {
+            this.health = 100;
+            this.ended = false;
+        },
+        gameEnd: function() {
+
+        },
         updateXY: function(event) {
             this.x = event.offsetX;
             this.y = event.offsetY;
@@ -38,6 +61,9 @@ new Vue({
         logNumber: function() {
             console.log('You entered your house number');
         },
+        toggleNearby: function() {
+            this.nearby = !this.nearby;
+        },
     },
     computed: {
         addToA: function() {
@@ -48,5 +74,23 @@ new Vue({
             console.log('something1');
             return this.b + this.age;
         },
+        compClasses: function() {
+            return {
+                nearby: this.nearby,
+            };
+        }
     }
 });
+
+var two = new Vue({
+    el: '#vue-app-two',
+    data: {
+        title: 'Vue App Two'
+    },
+    methods: {},
+    computed: {
+        greet: function() {
+            return 'Hello from the other side!';
+        },
+    }
+})
