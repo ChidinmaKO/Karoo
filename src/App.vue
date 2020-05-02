@@ -1,14 +1,16 @@
 <template>
-  <add-blog></add-blog>
+  <router-view></router-view>
 </template>
 
 <script>
   import AddBlog from './components/AddBlog.vue';
+  import Home from './components/Home.vue';
 
   export default {
     name: 'app',
     components: {
-      'add-blog': AddBlog
+      'add-blog': AddBlog,
+      'home': Home
     }
   }
 </script>

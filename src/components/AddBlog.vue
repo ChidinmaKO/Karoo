@@ -2,7 +2,7 @@
     <div id="add-blog">
         <h3>Add a New Blog Post</h3>
 
-        <form action="">
+        <form v-if="!submitted">
             <label for="title">Blog Title</label>
             <input 
                 type="text" 
@@ -35,9 +35,19 @@
                 <select id="author" v-model="blog.author">
                     <option v-for="(author, index) in authors" :key="`author[1]-${index}`">{{ author }}</option>
                 </select>
-
             </div>
+
+            <button 
+                @click.prevent="postBlog"
+                class="button"
+            >
+                Add Blog
+            </button>
         </form>
+
+        <div v-if="submitted">
+            <h4>Thanks for adding your post!</h4>
+        </div>
 
         <div id="preview">
             <h4>Preview Blog</h4>
@@ -65,31 +75,44 @@
                 categories: [],
                 author: ''
             },
-            authors: ['Jason Karoo', 'Tyler Lee', 'Erik Tom']
+            authors: ['Jason Karoo', 'Tyler Lee', 'Erik Tom'],
+            submitted: false,
+            resource: {}
         }
     },
-    methods: {},
+    methods: {
+        postBlog() {
+            if(this.blog.title && this.blog.content && this.blog.author) {
+                this.resource.save({}, this.blog);
+                this.submitted = true;
+            }
+            this.blog = {};
+        }
+    },
+    created() {
+        this.resource = this.$resource('blogData.json');
+    }
   }
 </script>
 
 <style>
-    #add-blog *{
+    #add-blog * {
         box-sizing: border-box;
     }
-    #add-blog{
+    #add-blog {
         margin: 20px auto;
         max-width: 500px;
     }
-    label{
+    label {
         display: block;
         margin: 20px 0 10px;
     }
-    input[type="text"], textarea{
+    input[type="text"], textarea {
         display: block;
         width: 100%;
         padding: 8px;
     }
-    #preview{
+    #preview {
         padding: 10px 20px;
         border: 1px dotted #ccc;
         margin: 30px 0;
@@ -97,12 +120,24 @@
     h3{
         margin-top: 10px;
     }
-    #checkboxes input{
+    #checkboxes input {
         display: inline-block;
         margin-right: 10px;
     }
-    #checkboxes label{
+    #checkboxes label {
         display: inline-block;
+    }
+    button.button {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #302B63;
+        color: #FFFFFF;
+        border-radius: 4px;
+        border: 1px solid #302B63;
+        box-shadow: 1px 1px 1px #302B63;
+    }
+    button.button:hover {
+        background-color: #24243E;
     }
 
 </style>
