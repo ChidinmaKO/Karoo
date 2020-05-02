@@ -1,8 +1,9 @@
 <template>
   <div id="show-blogs">
     <h1>All Blog Articles</h1>
+    <input type="text" v-model="search" placeholder="search blogs" />
     <div 
-      v-for="(blog, index) in blogs"
+      v-for="(blog, index) in filteredBlogs"
       :key="`${index}`"
       class="single-blog"
     >
@@ -17,12 +18,16 @@
 </template>
 
 <script>
+  import { searchMixin } from '../mixins/searchMixin.js'
+
   export default {
     name: 'home',
+    mixins: [searchMixin],
     data() {
       return {
         resource: {},
-        blogs: []
+        blogs: [],
+        search: ''
       }
     },
     methods: {
