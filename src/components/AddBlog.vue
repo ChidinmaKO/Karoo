@@ -130,14 +130,13 @@
     button.button {
         margin-top: 20px;
         padding: 10px;
-        background-color: #302B63;
+        background-color: #6F0000;
         color: #FFFFFF;
         border-radius: 4px;
-        border: 1px solid #302B63;
-        box-shadow: 1px 1px 1px #302B63;
+        cursor: pointer;
     }
     button.button:hover {
-        background-color: #24243E;
+        background-color: #200122;
     }
 
 </style>

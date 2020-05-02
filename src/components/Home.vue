@@ -45,18 +45,18 @@
 </script>
 
 <style>
-  body{
+  body {
     margin: 0;
     font-family: 'Nunito SemiBold';
   }
-  #show-blogs{
+  #show-blogs {
     max-width: 800px;
     margin: 0px auto;
   }
-  .single-blog{
+  .single-blog {
     padding: 20px;
     margin: 20px 0;
     box-sizing: border-box;
-    background: #BBD2C5;
+    background: #E8CBC0;
   }
 </style>

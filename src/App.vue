@@ -1,16 +1,21 @@
 <template>
-  <router-view></router-view>
+  <div>
+    <app-header></app-header>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
   import AddBlog from './components/AddBlog.vue';
   import Home from './components/Home.vue';
+  import Header from './components/Header.vue';
 
   export default {
     name: 'app',
     components: {
       'add-blog': AddBlog,
-      'home': Home
+      'home': Home,
+      'app-header': Header
     }
   }
 </script>
