@@ -91,11 +91,19 @@
     },
     created() {
         this.resource = this.$resource('blogData.json');
-    }
+    },
+    updated() {
+        if(this.postBlog) {
+            setTimeout(() => {
+                this.submitted = false
+            }, 5000)   
+        }
+        
+    },
   }
 </script>
 
-<style>
+<style scoped>
     #add-blog * {
         box-sizing: border-box;
     }
@@ -130,13 +138,16 @@
     button.button {
         margin-top: 20px;
         padding: 10px;
-        background-color: #6F0000;
+        background-color: #636FA4;
+        border: 1px solid #636FA4;
         color: #FFFFFF;
         border-radius: 4px;
         cursor: pointer;
+        font-weight: 700;
     }
     button.button:hover {
-        background-color: #200122;
+        background-color: #6F0000;
+        border: 1px solid #6F0000;
     }
 
 </style>

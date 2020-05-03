@@ -13,6 +13,13 @@ const router = new VueRouter({
   mode: 'history'
 });
 
+Vue.filter('textToUpperCase', value => {
+  return value ? value.toUpperCase() : ''
+})
+Vue.filter('snippet', value => {
+  return value ? value.slice(0, 100) + '...' : ''
+})
+
 new Vue({
   el: '#app',
   router,
